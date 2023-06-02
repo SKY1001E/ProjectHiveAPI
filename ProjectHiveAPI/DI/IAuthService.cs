@@ -8,6 +8,6 @@ namespace ProjectHiveAPI.DI
     {
         public Task<User> Login(AuthModel login);
 
-        public Task Register(User user);
+        public Task<bool> Register(User user);
     }
 }

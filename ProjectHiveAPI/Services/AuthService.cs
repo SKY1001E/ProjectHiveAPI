@@ -31,11 +31,18 @@ namespace ProjectHiveAPI.Services
             return null; // Пароль не соответствует или пользователь не найден
         }
 
-        public Task Register(User user)
+        public async Task<bool> Register(User user)
         {
-            this.userService.AddUser(user);
+            var isContainUser = await context.User.AnyAsync(u => u.Email == user.Email);
 
-            return Task.CompletedTask;
+            if (isContainUser)
+            {
+                return true;
+            }
+
+            this.userService?.AddUser(user);
+
+            return false;
         }
 
         private bool VerifyPassword(string enteredPassword, string hashedPassword)

@@ -50,6 +50,7 @@ namespace ProjectHiveAPI.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<string>> Register(AuthModel authModel)
         {
+
             // Создание нового пользователя и генерация JWT Token
             var user = new User
             {
@@ -60,11 +61,16 @@ namespace ProjectHiveAPI.Controllers
                 // Дополнительные поля пользователя
             };
 
-            await this._authService.Register(user);
+            var existUser = await this._authService.Register(user);
+
+            if (existUser)
+            {
+                return BadRequest("User with this email already exists");
+            }
 
             var token = GenerateJwtToken(user);
 
-            return Ok(token);
+            return Ok();
         }
 
         private string GenerateJwtToken(User user)
