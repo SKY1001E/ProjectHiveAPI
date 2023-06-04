@@ -29,6 +29,18 @@ namespace ProjectHiveAPI.Services
             return user;
         }
 
+        async Task<User> IUserService.GetUserByEmail(string email)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user;
+        }
+
         async Task IUserService.DeleteUser(int id)
         {
             var user = await this._context.User.FindAsync(id);

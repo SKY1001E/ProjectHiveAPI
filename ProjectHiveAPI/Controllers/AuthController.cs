@@ -56,6 +56,8 @@ namespace ProjectHiveAPI.Controllers
             {
                 Login = authModel.Email,
                 Email = authModel.Email,
+                FirstName = "No name",
+                LastName = "No surname",
                 Password = BCrypt.Net.BCrypt.HashPassword(authModel.Password),
                 Role = "User",
                 // Дополнительные поля пользователя

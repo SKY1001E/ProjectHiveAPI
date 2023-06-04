@@ -26,6 +26,14 @@ namespace ProjectHiveAPI.Controllers
             return users;
         }
 
+        [HttpGet("{email}")]
+        public async Task<User> GetUserByEmail(string email)
+        {
+            var user = await _userService.GetUserByEmail(email);
+
+            return user;
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
