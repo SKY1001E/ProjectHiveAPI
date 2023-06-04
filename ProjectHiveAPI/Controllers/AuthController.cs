@@ -88,6 +88,7 @@ namespace ProjectHiveAPI.Controllers
                 Subject = new ClaimsIdentity(new[]
                 {
             new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.NameIdentifier, $"{user.Id}"),
 
             // Дополнительные утверждения (claims) о пользователе
         }),
