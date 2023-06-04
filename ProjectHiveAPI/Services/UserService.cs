@@ -54,5 +54,29 @@ namespace ProjectHiveAPI.Services
 
             await _context.SaveChangesAsync();
         }
+
+        async Task<bool> IUserService.UpdateUser(User user)
+        {
+            var existingUser = await _context.User.FindAsync(user.Id);
+
+            if (existingUser == null)
+            {
+                return false; // Пользователь не найден, обновление не выполнено
+            }
+
+            // Обновляем свойства существующего пользователя
+            existingUser.FirstName = user.FirstName;
+            existingUser.LastName = user.LastName;
+            existingUser.Email = user.Email;
+            existingUser.Password = user.Password;
+            existingUser.Role = user.Role;
+            existingUser.Login = user.Login;
+            existingUser.ProfileImage = user.ProfileImage;
+
+            // Сохраняем изменения в базе данных
+            await _context.SaveChangesAsync();
+
+            return true; // Обновление выполнено успешно
+        }
     }
 }

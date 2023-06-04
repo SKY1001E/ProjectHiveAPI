@@ -41,5 +41,25 @@ namespace ProjectHiveAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] User updatedUser)
+        {
+            if (id != updatedUser.Id)
+            {
+                return BadRequest(); // Некорректный запрос, идентификатор не соответствует пользователю
+            }
+
+            var result = await _userService.UpdateUser(updatedUser);
+
+            if (result)
+            {
+                return Ok(); // Обновление выполнено успешно
+            }
+            else
+            {
+                return NotFound(); // Пользователь не найден, обновление не выполнено
+            }
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace ProjectHiveAPI.DI
         public Task<User> AddUser(User user);
         public Task<User> GetUserByEmail(string email);
         public Task DeleteUser(int id);
+        public Task<bool> UpdateUser(User user);
     }
 }
