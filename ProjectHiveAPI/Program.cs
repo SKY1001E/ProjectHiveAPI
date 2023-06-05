@@ -15,6 +15,8 @@ builder.Services.AddDbContext<ProjectHiveContext>(options =>
 // DI
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
 
 // Add services to the container.
 builder.Services.AddCors(options =>
