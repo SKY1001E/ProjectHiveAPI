@@ -15,7 +15,7 @@ namespace ProjectHiveAPI.DataBase
         public DbSet<Project> Project { get; set; }
         public DbSet<SubscriptionPlan> Plans { get; set; }
         public DbSet<SubTask> SubTasks { get; set; }
-        public DbSet<Models.Task> Tasks { get; set; }
+        public DbSet<Models.Task> Task { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<UserProject> UserProject { get; set; }
     }
