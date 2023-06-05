@@ -55,5 +55,18 @@ namespace ProjectHiveAPI.Controllers
 
             return NotFound(); // Пользователь не найден
         }
+
+        [HttpGet("id/{projectId}")]
+        public async Task<ActionResult<Project>> GetProjectById(int projectId)
+        {
+            var project = await _projectService.GetProjectById(projectId);
+
+            if (project == null)
+            {
+                return NotFound(); // Возвращает 404 Not Found, если проект не найден
+            }
+
+            return project;
+        }
     }
 }

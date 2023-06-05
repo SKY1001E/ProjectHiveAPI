@@ -61,5 +61,18 @@ namespace ProjectHiveAPI.Controllers
                 return NotFound(); // Пользователь не найден, обновление не выполнено
             }
         }
+
+        [HttpGet("id/{id}")]
+        public async Task<ActionResult<User>> GetUserById(int id)
+        {
+            var user = await _userService.GetUserById(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
     }
 }

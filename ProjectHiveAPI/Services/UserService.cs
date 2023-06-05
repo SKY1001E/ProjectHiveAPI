@@ -55,6 +55,12 @@ namespace ProjectHiveAPI.Services
             await _context.SaveChangesAsync();
         }
 
+        async Task<User?> IUserService.GetUserById(int userId)
+        {
+            var user = await _context.User.FindAsync(userId);
+            return user;
+        }
+
         async Task<bool> IUserService.UpdateUser(User user)
         {
             var existingUser = await _context.User.FindAsync(user.Id);

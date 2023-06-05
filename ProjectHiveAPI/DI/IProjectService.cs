@@ -8,6 +8,6 @@ namespace ProjectHiveAPI.DI
         public Task<bool> AddUserToProject(int projectId, int userId);
         public Task<Project> CreateProject(Project newProject);
         public Task<IEnumerable<Project>> GetProjectsByUser(int userId);
-
+        public Task<Project?> GetProjectById(int projectId);
     }
 }

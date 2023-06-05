@@ -64,6 +64,12 @@ namespace ProjectHiveAPI.Services
 
             return newProject;
         }
+        
+        public async Task<Project?> GetProjectById(int projectId)
+        {
+            var project = await _context.Project.FindAsync(projectId);
+            return project;
+        }
 
         public async Task<IEnumerable<Project>> GetProjectsByUser(int userId)
         {
